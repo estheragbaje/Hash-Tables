@@ -53,7 +53,11 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+        if self.storage[index]:
+            return "There is an error! A collision occurs at this index"
+        self.storage[index] = LinkedPair(key, value)
+        
 
 
 
@@ -66,7 +70,6 @@ class HashTable:
         Fill this in.
         '''
         pass
-
 
     def retrieve(self, key):
         '''
