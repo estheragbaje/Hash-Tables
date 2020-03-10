@@ -79,7 +79,12 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # index = self._hash_mod(key)
+        # if not self.storage[index]:
+        #     return "Error! Key could not be found"
+        # self.storage[index] = None
+        # else:
+        #   return self.storage[index].value
 
 
     def resize(self):
@@ -89,7 +94,17 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        self.capacity *= 2
+        # create a new storage with the size of the capacity
+        new_storage = [None] * self.capacity
+        # iterate over the data in current storage
+        for i in range(self.storage):
+            # copy over the element
+            new_storage[i] = self.storage[i]
+        # set the storage to the new storage (add ref)
+        self.storage = new_storage
+
+      
 
 
 
