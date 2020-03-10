@@ -53,13 +53,22 @@ class HashTable:
 
         Fill this in.
         '''
+        #Use self._hash_mod(key) to get the index of the insertion
         index = self._hash_mod(key)
-        if self.storage[index]:
-            return "There is an error! A collision occurs at this index"
-        self.storage[index] = LinkedPair(key, value)
+        #Check to see if there's a value at this index. If there is no value:
+        if self.storage[index] is None:
+        #make a LinkedPair with the key, value and set it at that index
+          self.storage[index] = LinkedPair(key, value)
+        else:
+        #get the current index
+          current_node = self.storage[index]
+          while current_node:
+            #if key at current node is the same as key of the data, we need to chain
+            if current_node.key == key:
+              current_node = current_node.next
+            #insert the new linked pair at the end of the linked list.
+              current_node.next = LinkedPair(key, value)
         
-
-
 
     def remove(self, key):
         '''
