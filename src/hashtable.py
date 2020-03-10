@@ -78,7 +78,15 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        #retrieve the index of the insertion
+        # index = self._hash_mod(key)
+
+        # if not self.storage[index]:
+        #   print('key is not found')
+        #   return
+        
+
+
 
     def retrieve(self, key):
         '''
@@ -88,12 +96,23 @@ class HashTable:
 
         Fill this in.
         '''
-        # index = self._hash_mod(key)
-        # if not self.storage[index]:
-        #     return "Error! Key could not be found"
-        # self.storage[index] = None
-        # else:
-        #   return self.storage[index].value
+         #get the index of the insertion
+        index = self._hash_mod(key)
+        # check to see if the value at the index is not None
+        if self.storage[index] is not None:
+            # loop through the linked list to find the key
+            current_node = self.storage[index]
+            while current_node is not None:
+                # if the current linked node key == key return the value
+                if current_node.key == key:
+                    return current_node.value
+                # increment current_node
+                current_node = current_node.next
+            # return None is a key matching the input key is not found
+            return None
+        # otherwise return None
+        else:
+            return None
 
 
     def resize(self):
